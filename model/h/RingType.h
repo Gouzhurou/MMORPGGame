@@ -1,0 +1,8 @@
+#ifndef RINGTYPE_H_INCLUDED
+#define RINGTYPE_H_INCLUDED
+
+enum class RingType {
+    DAMAGE, HP, DEFENSE, VISION, NONE
+};
+
+#endif // RINGTYPE_H_INCLUDED
