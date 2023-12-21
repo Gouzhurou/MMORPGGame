@@ -24,9 +24,10 @@ public:
     Field(Field&&);
     Field& operator=(Field&&);
     ~Field();
-    void print();
+    void print(Point&);
     Cell* getCell(unsigned, unsigned);
     Point getStart();
+    Point getEnd();
     void setEventInCell(unsigned, unsigned, GameEvent*);
     void printSize();
 };

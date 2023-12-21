@@ -1,16 +1,17 @@
 #include <iostream>
 #include "BombEvent.h"
 
-BombEvent::BombEvent(Action& action) {
+BombEvent::BombEvent(Controller& action) {
     this->action = &action;
-    std::cout << "Bomb was created" << std::endl;
+    // std::cout << "Bomb was created" << std::endl;
 }
 
 void BombEvent::event() {
     Character* hero = this->action->getHero();
-    hero->setHp(hero->getHp() - hero->getMaxHp() / 4);
-    std::cout << "The bomb did its job" << std::endl;
-    hero->printInfo();
+    int hp = hero->getHp() - hero->getMaxHp() / 4;
+    hero->setHp(hp < 0 ? 0 : hp);
+    // std::cout << "The bomb did its job" << std::endl;
+    // hero->printInfo();
 }
 
 void BombEvent::print() {

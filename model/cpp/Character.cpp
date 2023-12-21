@@ -28,7 +28,7 @@ void Character::eatApple(unsigned index) {
     }
     else this->hp += apples[index].getHp();
     this->bag.deleteApple(index);
-    std::cout << "You ate apple" << std::endl;
+    // std::cout << "You ate apple" << std::endl;
 }
 
 bool Character::canBringApple() {
@@ -38,7 +38,7 @@ bool Character::canBringApple() {
 void Character::bringApple(Apple apple) {
     if (!(this->canBringApple())) return;
     this->bag.addApple(apple);
-    std::cout << "You btought apple" << std::endl;
+    // std::cout << "You btought apple" << std::endl;
 }
 
 bool Character::canBringRing() {
@@ -63,7 +63,7 @@ void Character::bringRing(Ring ring) {
             this->visionRadius += value;
             break;
     }
-    std::cout << "You brought ring " << ring.getName() << std::endl;
+    // std::cout << "You brought ring " << ring.getName() << std::endl;
 }
 
 void Character::deleteRing(unsigned index) {
@@ -102,4 +102,12 @@ unsigned Character::getMaxHp() {
 
 unsigned Character::getHp() {
     return this->hp;
+}
+
+void Character::reload() {
+    this->hp = START_MAX_HP;
+    this->maxHp = START_MAX_HP;
+    this->damage = 1;
+    this->defense = 0;
+    this->visionRadius = START_VISION_RADIUS;
 }

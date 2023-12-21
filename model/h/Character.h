@@ -34,6 +34,7 @@ public:
     void setHp(unsigned);
     unsigned getMaxHp();
     unsigned getHp();
+    void reload();
 };
 
 #endif // CHARACTER_H_INCLUDED

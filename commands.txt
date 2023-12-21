@@ -1,0 +1,2 @@
+RIGHT;DOWN;LEFT;UP;EXIT;RESTART
+f;d;s;e;t

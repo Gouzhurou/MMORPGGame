@@ -2,14 +2,22 @@
 #include "Direction.h"
 #include "TeleportEvent.h"
 
-TeleportEvent::TeleportEvent(Action& action) {
+TeleportEvent::TeleportEvent(Controller& action) {
     this->action = &action;
-    std::cout << "Teleport was created" << std::endl;
+    // std::cout << "Teleport was created" << std::endl;
 }
 
 void TeleportEvent::event() {
-    this->action->move(Direction::LEFT);
-    this->action->move(Direction::UP);
+    int direction;
+    Point checkPoint = *(action->getPoint());
+
+    for (direction = 0; direction < 4; direction++) {
+        Point moved = checkPoint.move(direction);
+        if (action->getField()->getCell(moved.getX(), moved.getY())->getPassability()) {
+            break;
+        }
+    }
+    this->action->move(static_cast<Direction>(direction));
 }
 
 void TeleportEvent::print() {

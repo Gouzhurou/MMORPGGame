@@ -6,28 +6,29 @@ Point::Point(unsigned x, unsigned y) {
     this->y = y;
 }
 
-Point::Point(const Point& other) : x(other.x), y(other.y) {
-    // std::cout << "Point coped in constructor" << std::endl;
-}
+Point::Point(const Point& other) : x(other.x), y(other.y) {}
 
 Point& Point::operator=(const Point& other) {
     this->x = other.x;
     this->y = other.y;
-    // std::cout << "Point coped" << std::endl;
-    // this->print();
     return *this;
 }
 
 Point::Point(Point&& moved) : x(moved.x), y(moved.y) {
-    // std::cout << "Point moved in constructor" << std::endl;
 }
 
 Point& Point::operator=(Point&& moved) {
     this->x = moved.x;
     this->y = moved.y;
-    // std::cout << "Point moved" << std::endl;
-    // this->print();
     return *this;
+}
+
+bool Point::operator!=(Point& point) {
+    return this->x != point.getX() || this->y != point.getY();
+}
+
+bool Point::operator==(Point& point) {
+    return this->x == point.getX() && this->y == point.getY();
 }
 
 unsigned Point::getX() {
@@ -36,6 +37,27 @@ unsigned Point::getX() {
 
 unsigned Point::getY() {
     return this->y;
+}
+
+Point Point::move(int direction) {
+    unsigned x = this->x;
+    unsigned y = this->y;
+    switch (direction) {
+        case static_cast<int>(Direction::UP):
+            y += 1;
+            break;
+        case static_cast<int>(Direction::DOWN):
+            y -= 1;
+            break;
+        case static_cast<int>(Direction::LEFT):
+            x -= 1;
+            break;
+        case static_cast<int>(Direction::RIGHT):
+            x += 1;
+            break;
+    }
+
+    return Point(x, y);
 }
 
 void Point::print() {

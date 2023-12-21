@@ -5,9 +5,9 @@
 
 class TeleportEvent: public GameEvent {
 private:
-    Action* action;
+    Controller* action;
 public:
-    TeleportEvent(Action&);
+    TeleportEvent(Controller&);
     void event();    
     void print();
 };

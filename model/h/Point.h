@@ -1,3 +1,5 @@
+#include "Direction.h"
+
 #ifndef POINT_H_INCLUDED
 #define POINT_H_INCLUDED
 #define DEFAULT_VALUE 0
@@ -15,6 +17,9 @@ public:
     unsigned getX();
     unsigned getY();
     void print();
+    bool operator!=(Point&);
+    bool operator==(Point&);
+    Point move(int);
 };
 
 #endif

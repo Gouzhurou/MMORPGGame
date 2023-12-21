@@ -20,8 +20,6 @@ Field::Field(unsigned width, unsigned height) {
     }
     this->start = Point(START, START);
     this->end = Point(height - 1, width - 1);
-    std::cout << "Created field: " << this->width << " " << this->height << std::endl << std::endl;
-    // this->print();
 }
 
 bool Field::widthIsCorrect(unsigned width) {
@@ -35,19 +33,12 @@ bool Field::heightIsCorrect(unsigned height) {
 void Field::setPoints(unsigned startX, unsigned startY, unsigned endX, unsigned endY) {
     Point start(startX, startY);
     Point end(endX, endY);
-    std::cout << "points are setting..." << std::endl;
-    std::cout << this->pointIsCorrect(start) << std::endl;
     if (this->pointIsCorrect(start)) {
         this->start = Point(startX, startY);
-        std::cout << "start was setted" << std::endl;
-        this->start.print();
     }
     if (this->pointIsCorrect(end)) {
         this->end = Point(endX, endY);
-        std::cout << "end was setted" << std::endl;
-        this->end.print();
     }
-    // this->print();
 }
 
 bool Field::pointIsCorrect(Point& point) {
@@ -67,8 +58,6 @@ Field::Field(const Field& other) :
     for (unsigned i = 0; i < this->height; i++) {
         memcpy(this->field[i], other.field[i], sizeof(Cell) * this->width);
     }
-    // std::cout << "Coped field in constructor:" << std::endl;
-    // this->print();
 }
 
 Field& Field::operator=(const Field& other) {
@@ -84,8 +73,6 @@ Field& Field::operator=(const Field& other) {
     for (unsigned i = 0; i < this->height; i++) {
         memcpy(this->field[i], other.field[i], sizeof(Cell) * this->width);
     }
-    // std::cout << "Coped field:" << std::endl;
-    // this->print();
     return *this;
 }
 
@@ -93,8 +80,6 @@ Field::Field(Field&& moved) :
     width(moved.width), height(moved.height), start(moved.start),
     end(moved.end), field(moved.field) {
     moved.field = nullptr;
-    // std::cout << "Moved field in constructor:" << std::endl;
-    // this->print();
 }
 
 Field& Field::operator=(Field&& moved) {
@@ -105,30 +90,26 @@ Field& Field::operator=(Field&& moved) {
     this->end = moved.end;
     this->field = moved.field;
     moved.field = nullptr;
-    // std::cout << "Moved field:" << std::endl;
-    // this->print();
     return *this;
 }
 
 Field::~Field() {
-    // this->print();
     for (unsigned i = 0; i < this->height; i++) {
         delete[] this->field[i];
     }
     delete[] this->field;
-    std::cout << "Field was destroyed" << std::endl;
+    // std::cout << "Field was destroyed" << std::endl;
 }
 
-void Field::print() {
-    std::cout << "size ";
-    std::cout << this->width << " " << this->height << std::endl;
-    std::cout << "start ";
-    this->start.print();
-    std::cout << "end ";
-    this->end.print();
+void Field::print(Point& characterPoint) {
     for (unsigned j = 0; j < this->width; j++) {
         for (unsigned i = 0; i < this->height; i++) {
-            this->getCell(i, j)->print();
+            if (i == characterPoint.getX() && j == characterPoint.getY()) {
+                std::cout << 'H';
+            }
+            else {
+                this->getCell(i, j)->print();
+            }
             std::cout << " ";
         }
         std::cout << std::endl;
@@ -142,6 +123,10 @@ Cell* Field::getCell(unsigned x, unsigned y) {
 
 Point Field::getStart() {
     return this->start;
+}
+
+Point Field::getEnd() {
+    return this->end;
 }
 
 void Field::setEventInCell(unsigned x, unsigned y, GameEvent* event) {

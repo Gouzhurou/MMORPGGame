@@ -1,7 +1,7 @@
 #ifndef GAMEEVENT_H_INCLUDED
 #define GAMEEVENT_H_INCLUDED
 
-#include "Action.h"
+#include "Controller.h"
 
 class GameEvent {
 public:
