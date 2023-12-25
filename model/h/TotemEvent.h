@@ -5,9 +5,9 @@
 
 class TotemEvent: public GameEvent {
 private:
-    Action* action;
+    Controller* action;
 public:
-    TotemEvent(Action&);
+    TotemEvent(Controller&);
     virtual void event();    
     void print();
 }; 

@@ -1,5 +1,5 @@
 #include "Field.h"
-#include "Action.h"
+#include "Controller.h"
 #define BOMB_FREQUENCY 9
 #define TOTEM_FREQUENCY 36
 #define TELEPORT_FREQUENCY 25
@@ -9,8 +9,8 @@
 
 class FieldGenerator {
 public:
-    Field* generateRandom(Action&, unsigned, unsigned);
-    Field* generateRandom(Action&);
+    Field* generateRandom(Controller&, unsigned, unsigned);
+    Field* generateRandom(Controller&);
 };
 
 #endif

@@ -1,18 +1,15 @@
 #include <iostream>
-#include "Action.h"
+#include "Controller.h"
 
-Action::Action(Character* hero, Field* field) {
-    std::cout << "action was created" << std::endl;
+Controller::Controller(Character* hero, Field* field) {
     this->hero = hero;
     this->field = field;
     if (field != nullptr) {
         this->point = field->getStart();
     }
-    // std::cout << "You are here: ";
-    // this->point.print();
 }
 
-void Action::move(Direction direction) {
+void Controller::move(Direction direction) {
     Point futurePoint;
     int futureX;
     int futureY;
@@ -56,35 +53,35 @@ void Action::move(Direction direction) {
             }
             break;
     }
-    std::cout << "You are here: ";
-    this->point.print();
     GameEvent* event = field->getCell(
         this->point.getX(), this->point.getY()
     )->getEvent();
     if (event != nullptr) {
         event->event();
     }
+    field->getCell(
+        this->point.getX(), this->point.getY()
+    )->setEvent(nullptr);
 }
 
-Character* Action::getHero() {
+Character* Controller::getHero() {
     return this->hero;
 }
 
-Point* Action::getPoint() {
+Point* Controller::getPoint() {
     return &(this->point);
 }
 
-Field* Action::getField() {
+Field* Controller::getField() {
     return this->field;
 }
 
-void Action::setField(Field* field) {
+void Controller::setField(Field* field) {
     this->field = field;
     this->point = field->getStart();
 }
 
-void Action::setPoints(unsigned startX, unsigned startY, unsigned endX, unsigned endY) {
-    std::cout << "points setting in action" << std::endl;
+void Controller::setPoints(unsigned startX, unsigned startY, unsigned endX, unsigned endY) {
     this->field->setPoints(startX, startY, endX, endY);
     this->point = Point(startX, startY);
 }

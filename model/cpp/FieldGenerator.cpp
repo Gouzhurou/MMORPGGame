@@ -4,12 +4,10 @@
 #include "TotemEvent.h"
 #include "TeleportEvent.h"
 #include <stdlib.h>
+#include <ctime>
 
-
-Field* FieldGenerator::generateRandom(Action& action, unsigned x, unsigned y) {
+Field* FieldGenerator::generateRandom(Controller& action, unsigned x, unsigned y) {
     Field* field = new Field(x, y);
-    std::cout << "field was created" << std::endl;
-    field->printSize();
 
     for (int i = 0; i < x; i++) {
         for (int j = 0; j < y; j++) {
@@ -18,14 +16,12 @@ Field* FieldGenerator::generateRandom(Action& action, unsigned x, unsigned y) {
             }
         }
     }
-    std::cout << "borders was setted" << std::endl;
 
     unsigned startX = 1;
     unsigned startY = 1;
     unsigned endX = x - 2;
     unsigned endY = y - 2;
     field->setPoints(startX, startY, endX, endY);
-    std::cout << "points was setted" << std::endl;
 
     unsigned weight = (x - 2) * (y - 2) - 1;
     unsigned bombsCount = weight / BOMB_FREQUENCY + 1;
@@ -35,13 +31,14 @@ Field* FieldGenerator::generateRandom(Action& action, unsigned x, unsigned y) {
     unsigned curTotemsCount = 0;
     unsigned curTeleportsCount = 0;
 
-    std::cout << bombsCount << " bombs" << std::endl;
-    std::cout << totemsCount << " totems" << std::endl;
-    std::cout << teleportsCount << " teleports" << std::endl;
-
+    srand(time(NULL));
     while (true) {
         unsigned curX = rand() % (x - 2) + 1;
         unsigned curY = rand() % (y - 2) + 1;
+        while (curX == 1 && curY == 1 || curX == x - 2 && curY == y - 2) {
+            curX = rand() % (x - 2) + 1;
+            curY = rand() % (y - 2) + 1;
+        }
         Cell* cur_cell = field->getCell(curX, curY);
         if (cur_cell->getPassability() && cur_cell->getEvent() == nullptr) {
             if (curBombsCount < bombsCount) {
@@ -69,6 +66,6 @@ Field* FieldGenerator::generateRandom(Action& action, unsigned x, unsigned y) {
     return field;
 }
 
-Field* FieldGenerator::generateRandom(Action& action) {
+Field* FieldGenerator::generateRandom(Controller& action) {
     return this->generateRandom(action, FIELD_SIZE, FIELD_SIZE);
 }

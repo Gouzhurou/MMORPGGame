@@ -5,9 +5,9 @@
 
 class BombEvent: public GameEvent {
 private:
-    Action* action;
+    Controller* action;
 public:
-    BombEvent(Action&);
+    BombEvent(Controller&);
     void event();    
     void print();
 };

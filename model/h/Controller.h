@@ -3,16 +3,16 @@
 #include "Field.h"
 #include "Point.h"
 
-#ifndef ACTION_H_INCLUDED
-#define ACTION_H_INCLUDED
+#ifndef CONTROLLER_H_INCLUDED
+#define CONTROLLER_H_INCLUDED
 
-class Action {
+class Controller {
 private:
     Character* hero;
     Point point;
     Field* field;
 public:
-    Action(Character*, Field* field = nullptr);
+    Controller(Character*, Field* field = nullptr);
     void move(Direction);
     Character* getHero();
     Point* getPoint();
