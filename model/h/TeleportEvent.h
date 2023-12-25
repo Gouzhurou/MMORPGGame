@@ -9,7 +9,6 @@ private:
 public:
     TeleportEvent(Controller&);
     void event();    
-    void print();
 };
 
 #endif

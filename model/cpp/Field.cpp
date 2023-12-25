@@ -14,12 +14,12 @@ Field::Field(unsigned width, unsigned height) {
     else {
         this->height = FIELD_SIZE;
     }
-    this->field = new Cell*[height];
-    for (unsigned i = 0; i < height; i++) {
-        this->field[i] = new Cell[width];
+    this->field = new Cell*[this->height];
+    for (unsigned i = 0; i < this->height; i++) {
+        this->field[i] = new Cell[this->width];
     }
     this->start = Point(START, START);
-    this->end = Point(height - 1, width - 1);
+    this->end = Point(this->height - 2, this->width - 2);
 }
 
 bool Field::widthIsCorrect(unsigned width) {
@@ -101,22 +101,6 @@ Field::~Field() {
     // std::cout << "Field was destroyed" << std::endl;
 }
 
-void Field::print(Point& characterPoint) {
-    for (unsigned j = 0; j < this->width; j++) {
-        for (unsigned i = 0; i < this->height; i++) {
-            if (i == characterPoint.getX() && j == characterPoint.getY()) {
-                std::cout << 'H';
-            }
-            else {
-                this->getCell(i, j)->print();
-            }
-            std::cout << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-}
-
 Cell* Field::getCell(unsigned x, unsigned y) {
     return &(this->field[y][x]);
 }
@@ -133,6 +117,10 @@ void Field::setEventInCell(unsigned x, unsigned y, GameEvent* event) {
     (this->field[y] + x)->setEvent(event);
 }
 
-void Field::printSize() {
-    std::cout << this->width << " " << this->height << std::endl;
+unsigned Field::getWidth() {
+    return width;
+}
+
+unsigned Field::getHeight() {
+    return height;
 }

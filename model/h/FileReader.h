@@ -10,7 +10,7 @@
 class FileReader {
 private:
     std::fstream* in;
-    std::map<char, Command> commands{};
+    std::map<char, Command> commands;
     void setDefault();
     std::set<std::string> splitString(std::string);
     bool check(std::fstream*);

@@ -13,12 +13,18 @@
 #include "model/h/TeleportEvent.h"
 #include "model/h/FieldGenerator.h"
 #include "model/h/Game.h"
+#include "model/h/KeyboardInput.h"
+#include "model/h/FileReader.h"
+#include "model/h/Command.h"
 
 int main()  
 {
     Character hero {"Joe"};
-    Controller action(&hero);
-    Game game(action);
+    Controller controller(&hero);
+    FileReader fileReader = FileReader();
+    std::map<char, Command> commands = fileReader.getCommands();
+    Game game(controller, commands);
+
     while (game.startGame()) {}
 
     return 0;

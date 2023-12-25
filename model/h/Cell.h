@@ -12,7 +12,6 @@ public:
     Cell(bool passability = true, GameEvent* event = nullptr);
     void setPassability(bool);
     bool getPassability();
-    void print();
     GameEvent* getEvent();
     void setEvent(GameEvent*);
 };
