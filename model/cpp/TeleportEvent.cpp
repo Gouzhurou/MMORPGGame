@@ -4,7 +4,6 @@
 
 TeleportEvent::TeleportEvent(Controller& action) {
     this->action = &action;
-    // std::cout << "Teleport was created" << std::endl;
 }
 
 void TeleportEvent::event() {
@@ -18,8 +17,4 @@ void TeleportEvent::event() {
         }
     }
     this->action->move(static_cast<Direction>(direction));
-}
-
-void TeleportEvent::print() {
-    std::cout << "o";
 }

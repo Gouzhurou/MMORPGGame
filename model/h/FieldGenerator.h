@@ -9,8 +9,7 @@
 
 class FieldGenerator {
 public:
-    Field* generateRandom(Controller&, unsigned, unsigned);
-    Field* generateRandom(Controller&);
+    Field* generateRandom(Controller&, unsigned x = FIELD_SIZE, unsigned y = FIELD_SIZE);
 };
 
 #endif

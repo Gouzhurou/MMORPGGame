@@ -5,8 +5,7 @@
 
 class GameEvent {
 public:
-    virtual void event() = 0; 
-    virtual void print() = 0;   
+    virtual void event() = 0;  
 };
 
 #endif

@@ -3,7 +3,7 @@
 #ifndef FIELD_H_INCLUDED
 #define FIELD_H_INCLUDED
 #define FIELD_SIZE 7
-#define START 0
+#define START 1
 
 class Field {
 private:
@@ -24,12 +24,12 @@ public:
     Field(Field&&);
     Field& operator=(Field&&);
     ~Field();
-    void print(Point&);
     Cell* getCell(unsigned, unsigned);
     Point getStart();
     Point getEnd();
     void setEventInCell(unsigned, unsigned, GameEvent*);
-    void printSize();
+    unsigned getWidth();
+    unsigned getHeight();
 };
 
 #endif

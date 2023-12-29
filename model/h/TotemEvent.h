@@ -9,7 +9,6 @@ private:
 public:
     TotemEvent(Controller&);
     virtual void event();    
-    void print();
 }; 
 
 #endif

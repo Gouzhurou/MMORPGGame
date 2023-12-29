@@ -65,6 +65,7 @@ void FileReader::setDefault(){
     commands['d'] = Command::RIGHT;
     commands['z'] = Command::EXIT;
     commands['r'] = Command::RESTART;
+    commands['i'] = Command::INFO;
 }
 
 std::map<char, Command> FileReader::getCommands(){

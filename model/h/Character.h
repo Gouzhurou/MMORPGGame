@@ -4,8 +4,9 @@
 #include "Apple.h"
 #include "Ring.h"
 #include "RingType.h"
-#define START_VISION_RADIUS 2
+#define START_VISION_RADIUS 5
 #define START_MAX_HP 100
+#define SCALE_SIZE 10
 
 #ifndef CHARACTER_H_INCLUDED
 #define CHARACTER_H_INCLUDED
@@ -24,6 +25,7 @@ private:
 public:
     Character(std::string name="");
     void printInfo();
+    void printHp();
     void eatApple(unsigned);
     bool canBringApple();
     void bringApple(Apple);
@@ -35,6 +37,7 @@ public:
     unsigned getMaxHp();
     unsigned getHp();
     void reload();
+    unsigned getVisionRadius();
 };
 
 #endif // CHARACTER_H_INCLUDED

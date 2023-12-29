@@ -21,6 +21,19 @@ void Character::printInfo() {
     std::cout << std::endl;
 }
 
+void Character::printHp() {
+    std::cout << "hp: ";
+    unsigned hpSize = hp / SCALE_SIZE;
+    unsigned maxHpSize = maxHp / SCALE_SIZE;
+    for (int i = 0; i < hpSize; i++) {
+        std::cout << '*' << " ";
+    }
+    for (int i = 0; i < maxHpSize - hpSize; i++) {
+        std::cout << '-' << ' ';
+    }
+    std::cout << std::endl;
+}
+
 void Character::eatApple(unsigned index) {
     Apple* apples = this->bag.getApples();
     if (this->hp + apples[index].getHp() >= this->maxHp) {
@@ -28,7 +41,6 @@ void Character::eatApple(unsigned index) {
     }
     else this->hp += apples[index].getHp();
     this->bag.deleteApple(index);
-    // std::cout << "You ate apple" << std::endl;
 }
 
 bool Character::canBringApple() {
@@ -38,7 +50,6 @@ bool Character::canBringApple() {
 void Character::bringApple(Apple apple) {
     if (!(this->canBringApple())) return;
     this->bag.addApple(apple);
-    // std::cout << "You btought apple" << std::endl;
 }
 
 bool Character::canBringRing() {
@@ -63,7 +74,6 @@ void Character::bringRing(Ring ring) {
             this->visionRadius += value;
             break;
     }
-    // std::cout << "You brought ring " << ring.getName() << std::endl;
 }
 
 void Character::deleteRing(unsigned index) {
@@ -110,4 +120,8 @@ void Character::reload() {
     this->damage = 1;
     this->defense = 0;
     this->visionRadius = START_VISION_RADIUS;
+}
+
+unsigned Character::getVisionRadius() {
+    return visionRadius;
 }

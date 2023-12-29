@@ -18,7 +18,7 @@ Field* FieldGenerator::generateRandom(Controller& action, unsigned x, unsigned y
     }
 
     unsigned startX = 1;
-    unsigned startY = 1;
+    unsigned startY = y - 2;
     unsigned endX = x - 2;
     unsigned endY = y - 2;
     field->setPoints(startX, startY, endX, endY);
@@ -64,8 +64,4 @@ Field* FieldGenerator::generateRandom(Controller& action, unsigned x, unsigned y
     }
 
     return field;
-}
-
-Field* FieldGenerator::generateRandom(Controller& action) {
-    return this->generateRandom(action, FIELD_SIZE, FIELD_SIZE);
 }

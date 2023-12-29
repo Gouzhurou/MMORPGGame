@@ -9,7 +9,6 @@ private:
 public:
     BombEvent(Controller&);
     void event();    
-    void print();
 };
 
 #endif
