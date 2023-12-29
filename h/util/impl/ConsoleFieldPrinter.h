@@ -2,7 +2,6 @@
 #define CONSOLEFIELDPRINTER_H_INCLUDED
 
 #include "../../util/FieldPrinter.h"
-#include "../../model/Point.h"
 #include "../../event/impl/BombEvent.h"
 #include "../../event/impl/TotemEvent.h"
 #include "../../event/impl/TeleportEvent.h"

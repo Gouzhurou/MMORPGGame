@@ -1,4 +1,3 @@
-#include "../model/Field.h"
 #include "../logic/Controller.h"
 #include "../event/impl/BombEvent.h"
 #include "../event/impl/TotemEvent.h"

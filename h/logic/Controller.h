@@ -1,7 +1,5 @@
-#include "enum/Direction.h"
 #include "../model/Character.h"
 #include "../model/Field.h"
-#include "../model/Point.h"
 
 #ifndef CONTROLLER_H_INCLUDED
 #define CONTROLLER_H_INCLUDED

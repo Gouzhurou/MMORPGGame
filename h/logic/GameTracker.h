@@ -1,4 +1,3 @@
-#include "../model/Point.h"
 #include "Controller.h"
 #include "../util/FieldPrinter.h"
 #include "../util/impl/KeyboardInput.h"

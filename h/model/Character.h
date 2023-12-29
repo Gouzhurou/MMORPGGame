@@ -1,9 +1,6 @@
 #include <string>
 #include "Level.h"
 #include "Bag.h"
-#include "Apple.h"
-#include "Ring.h"
-#include "enum/RingType.h"
 #define START_VISION_RADIUS 5
 #define START_MAX_HP 100
 #define SCALE_SIZE 10
