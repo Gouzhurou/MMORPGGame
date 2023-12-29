@@ -44,8 +44,16 @@
 
 
 # Сборка проекта:
+## Ручная сборка:
 ```
 g++ -c .\main.cpp .\cpp\model\*.cpp .\cpp\event\impl\*.cpp .\cpp\logic\*.cpp .\cpp\util\*.cpp .\cpp\util\impl\*.cpp -I .\h\
 g++ .\*.o
 .\a.exe
+```
+
+## Автоматическая сборка:
+```
+make clean
+make
+.\hello.exe
 ```
